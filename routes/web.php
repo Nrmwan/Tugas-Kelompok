@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BajuController;
 use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Support\Facades\Route;
@@ -22,6 +23,9 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::get('/admin/home', 'BajuController@index')->name('home');
+Route::get('/admin/tambah', 'BajuController@create')->name('tambah');
+
 /*------------------------------------------
 --------------------------------------------
 All Normal Users Routes List
@@ -39,7 +43,10 @@ All Admin Routes List
 --------------------------------------------*/
 Route::middleware(['auth', 'user-access:admin'])->group(function () {
 
-    Route::get('/admin/home', [HomeController::class, 'adminHome'])->name('admin.home');
+    // Route::get('/admin/home', [HomeController::class, 'adminHome'])->name('admin.home');
+    Route::get('/admin/home', [BajuController::class, 'index'])->name('home');
+    Route::get('/admin/tambah', [BajuController::class, 'create'])->name('tambah');
+    Route::post('/admin/simpan', [BajuController::class, 'store'])->name('simpan');
 });
 
 /*------------------------------------------
