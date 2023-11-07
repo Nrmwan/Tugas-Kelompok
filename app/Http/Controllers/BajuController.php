@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\baju;
 use Illuminate\Http\Request;
 
 class BajuController extends Controller
@@ -11,7 +12,8 @@ class BajuController extends Controller
      */
     public function index()
     {
-        return view('admin.home');
+        $dtbaju = baju::all();
+        return view('admin.home', compact('dtbaju'));
     }
 
     /**
@@ -27,7 +29,25 @@ class BajuController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all());
+        // dd($request->all());
+
+        $data = baju::create([
+            'nama' => $request->nama,
+            'deskripsi' => $request->deskripsi,
+            'harga' => $request->harga,
+            'ukuran' => $request->ukuran,
+            'warna' => $request->warna,
+            'stok' => $request->stok,
+            'gambar' => $request->gambar
+        ]);
+
+        if ($request->hasFile('gambar')) {
+            $request->file('gambar')->move('img/', $request->file('gambar')->getClientOriginalName());
+            $data->gambar = $request->file('gambar')->getClientOriginalName();
+            $data->save();
+        }
+
+        return redirect('admin.home');
     }
 
     /**

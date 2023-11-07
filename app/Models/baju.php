@@ -9,6 +9,8 @@ class baju extends Model
 {
     use HasFactory;
 
+    protected $table = "baju";
+
     /**
      * The attributes that are mass assignable.
      *
