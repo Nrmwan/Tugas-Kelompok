@@ -14,11 +14,11 @@ return new class extends Migration
         Schema::create('baju', function (Blueprint $table) {
             $table->id();
             $table->string('nama', 255);
-            $table->string('deskripsi');
-            $table->string('harga', 10, 2);
+            $table->text('deskripsi');
+            $table->decimal('harga', 10, 2);
             $table->string('ukuran', 20);
             $table->string('warna', 20);
-            $table->string('stok');
+            $table->int('stok');
             $table->string('gambar', 255);
             $table->timestamps();
         });

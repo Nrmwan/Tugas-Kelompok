@@ -47,6 +47,9 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
     Route::get('/admin/home', [BajuController::class, 'index'])->name('admin.home');
     Route::get('/admin/tambah', [BajuController::class, 'create'])->name('tambah');
     Route::post('/admin/simpan', [BajuController::class, 'store'])->name('simpan');
+    Route::get('/admin/edit/{id}', [BajuController::class, 'edit'])->name('edit');
+    Route::post('/admin/update/{id}', [BajuController::class, 'update'])->name('update');
+    Route::get('/admin/delete/{id}', [BajuController::class, 'destroy'])->name('delete');
 });
 
 /*------------------------------------------

@@ -47,7 +47,7 @@ class BajuController extends Controller
             $data->save();
         }
 
-        return redirect('admin.home');
+        return redirect('admin/home');
     }
 
     /**
@@ -63,7 +63,8 @@ class BajuController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $baj = baju::findorfail($id);
+        return view('admin/Edit', compact('baj'));
     }
 
     /**
@@ -71,7 +72,9 @@ class BajuController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $baj = baju::findorfail($id);
+        $baj->update($request->all());
+        return redirect('admin/home');
     }
 
     /**
@@ -79,6 +82,8 @@ class BajuController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $baj = baju::findorfail($id);
+        $baj->delete();
+        return back();
     }
 }
