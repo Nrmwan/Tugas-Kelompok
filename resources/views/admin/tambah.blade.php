@@ -9,7 +9,7 @@
 
         <div class="card-body">
             <form action="{{ route('simpan') }}" method="POST" enctype="multipart/form-data">
-                {{ csrf_field() }}
+                @csrf
                 {{-- <div class="form-group">
                     <input type="text" id="nama" name="nama" class="form-control" placeholder="Nama Baju">
                 </div>
@@ -36,8 +36,8 @@
                     <label for="stok">Stok :</label>
                     <input type="number" name="stok" id="stok" class="form-control" placeholder="Stok" required><br><br>
             
-                    {{-- <label for="gambar">Gambar Produk :</label>
-                    <input type="file" name="gambar" id="gambar" class="form-control" required><br><br> --}}
+                    <label for="gambar">Gambar Produk :</label>
+                    <input type="file" name="gambar" id="gambar" class="form-control" required><br><br>
 
                     <label for="harga">Harga (Rupiah):</label>
                     <input type="number" name="harga" id="harga" class="form-control" placeholder="Harga" required><br><br>

@@ -18,27 +18,33 @@
     
     <!-- Navbar -->
     <nav class="navbar">
-        <a href="#" class="navbar-logo">Kopi<span>NiceTry</span>.</a>
+        <a href="#" class="navbar-logo">Fashion<span>Heaven</span>.</a>
 
         <div class="navbar-nav">
-            <a href="home">Home</a>
-            <a href="about">About</a>
-            <a href="menu">Menu</a>
-            <a href="contact">Contact</a>
+            <a href="/">Home</a>
+            {{-- <a href="aboute">About</a> --}}
+            <a href="menue">Menu</a>
+            {{-- <a href="contacte">Contact</a> --}}
         </div>
 
         <div class="navbar-extra">
-            <a href="#" id="search"><i data-feather="search"></i></a>
-            <a href="#" id="shopping-cart"><i data-feather="shopping-cart"></i></a>
+            {{-- <a href="#" id="shopping-cart"><i data-feather="shopping-cart"></i></a> --}}
             <a href="#" id="hamburger-menu"><i data-feather="menu"></i></a>
-            <a href="{{ route('logout') }}"
-            onclick="event.preventDefault();
-            document.getElementById('logout-form').
-            submit();"
-            id="log-out"><i data-feather="log-out"></i></a>
+            @if (Route::has('login'))
+            <div class="icon">
+                    <a href="#" id="search"><i data-feather="search"></i></a>
+                    @auth
+                        <a href="{{ url('/home') }}" class="icon">Home</a>
+                    @else
+                        <a href="{{ route('login') }}" class="icon"><i data-feather="log-in"></i></a>
 
-        
-</div>
+                        @if (Route::has('register'))
+                            <a href="{{ route('register') }}" class="icon ">Register</a>
+                        @endif
+                    @endauth
+                </div>
+            @endif
+        </div>
 
 </nav>
 <!-- Navbar End -->
@@ -47,7 +53,7 @@
     <!-- Hero Selection Start -->
     <section class="hero" id="home">
         <main class="content">
-            <h1>Mari Nikmati Secangkir Kopi<span>NiceTry</span></h1>
+            <h1>Mari Beli Baju Di Fashion<span>Heaven</span></h1>
             <p>Rumah bagi yang sering Nice Try mulu.</p>
             <a href="#" class="cta">Beli Sekarang</a>
         </main>

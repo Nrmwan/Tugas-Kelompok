@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\BajuController;
 use Illuminate\Support\Facades\Auth;
-
+use App\Models\baju;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 
@@ -18,7 +18,11 @@ use App\Http\Controllers\HomeController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
+});
+
+Route::get('/menue', function () {
+    return view('menu');
 });
 
 Auth::routes();
