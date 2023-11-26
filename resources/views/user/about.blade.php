@@ -7,7 +7,7 @@
 
         <div class="row">
             <div class="about-img">
-                <img src="img/about.jpg" alt="Tentang Kami">
+                <img src="img/home.jpg" alt="Tentang Kami">
             </div>
             <div class="content">
                 <h3>Tentang Kami?</h3>

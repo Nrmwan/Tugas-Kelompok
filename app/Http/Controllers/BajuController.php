@@ -15,6 +15,19 @@ class BajuController extends Controller
         $dtbaju = baju::all();
         return view('admin.home', compact('dtbaju'));
     }
+    /**
+     * Display a listing of the resource.
+     */
+    public function home()
+    {
+        $dtbaju = baju::all();
+        return view('menu', compact('dtbaju'));
+    }
+    public function user()
+    {
+        $dtbaju = baju::all();
+        return view('user.menu', compact('dtbaju'));
+    }
 
     /**
      * Show the form for creating a new resource.

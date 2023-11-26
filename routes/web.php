@@ -17,17 +17,20 @@ use App\Http\Controllers\HomeController;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+// Route::get('/', function () {
+//     return view('index');
+// });
 
-Route::get('/menue', function () {
-    return view('menu');
-});
+// Route::get('/menue', function () {
+//     return view('menu');
+// });
 
 Auth::routes();
 
-// Route::get('/admin/home', 'BajuController@index')->name('home');
+Route::get('/', function () {return view('index');});
+// Route::get('/menue', function () {return view('menu');});
+// Route::get('/', 'HomeController@index')->name('home');
+Route::get('/menue', [BajuController::class,'home'])->name('menu');
 // Route::get('/admin/tambah', 'BajuController@create')->name('tambah');
 
 /*------------------------------------------
@@ -38,6 +41,12 @@ All Normal Users Routes List
 Route::middleware(['auth', 'user-access:user'])->group(function () {
 
     Route::get('/home', [HomeController::class, 'index'])->name('home');
+    Route::get('/', function () {return view('user.home');});
+    // Route::get('/menu', function () {return view('user.menu');});
+    Route::get('/menu', [BajuController::class,'user'])->name('menu');
+    Route::get('/about', function () {return view('user.about');});
+    Route::get('/contact', function () {return view('user.contact');});
+
 });
 
 /*------------------------------------------
